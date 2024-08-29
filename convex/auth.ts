@@ -1,12 +1,13 @@
 import { convexAuth } from "@convex-dev/auth/server";
 import GitHub from "@auth/core/providers/github";
 import Google from "@auth/core/providers/google";
-//@ts-ignore
 import {Password} from "@convex-dev/auth/providers/password";
-import { DataModel } from "./_generated/dataModel";
+import type{ DataModel } from "./_generated/dataModel";
 
 const CustomPassword = Password<DataModel>({
-    profile(params:any){
+  
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      profile(params:any){
       return {
         email: params.email as string,
         name: params.name as string,
